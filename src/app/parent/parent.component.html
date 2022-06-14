@@ -1,0 +1,23 @@
+<div>
+  <h1> Parent</h1>
+  <input type="text" [(ngModel)]="channelNameInParent">
+  <p>{{msgFromChild}}</p>
+  <form (submit)="onSubmit()">
+    <input type="number" [(ngModel)]="firstNum" name="firstNum">
+    <p>+</p>
+    <input type="number" [(ngModel)]="secondNum" name="secondNum">
+<!--    <button type="submit">sent</button>-->
+  </form>
+  <p>add the inputs</p>
+  <button (click)="calculate()" style="padding: 1rem"> {{output ===0 ? 'no value yet': output}}</button>
+
+</div>
+<!--  primesc info de la parent in primul-->
+<app-child
+
+  [channelName]="channelNameInParent"
+
+  (sentMessageEmitter)="receiveMessage($event)"
+
+></app-child>
+<!--trimit catre parinte-->
